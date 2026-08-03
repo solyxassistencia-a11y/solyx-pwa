@@ -1,0 +1,26 @@
+{
+  "name": "Solyx Fidelidade",
+  "short_name": "Solyx",
+  "description": "Programa Oficial Solyx Fidelidade",
+
+  "start_url": "https://appsolyxfidelidade.blogspot.com/",
+
+  "scope": "https://appsolyxfidelidade.blogspot.com/",
+
+  "display": "standalone",
+
+  "orientation": "portrait",
+
+  "theme_color": "#B51217",
+
+  "background_color": "#050505",
+
+  "icons": [
+    {
+      "src": "https://www.dropbox.com/scl/fi/ip6z1ggdrkatb842mwdst/Icon_SF_512x512.png?rlkey=v1u4dxlq947v27xn4u06ry23b&raw=1",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
