@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -70,7 +68,6 @@ href="https://www.dropbox.com/scl/fi/281k0uzh03t551mw3ki4e/Ico_SF_100x100.png?rl
 ===================================================== */
 
 :root{
-
 
 /* BACKGROUNDS */
 
@@ -826,115 +823,50 @@ color:white;
 
 
 /* AÇÕES */
-
-
 .header-actions{
-
-
 display:flex;
-
 align-items:center;
-
 gap:15px;
-
-
 }
 
 
 
 .header-actions .btn{
-
-
 padding:13px 25px;
-
 font-size:14px;
-
-
 }
-
-
-
 
 
 /* MOBILE BUTTON */
-
-
 .menu-toggle{
-
-
 display:none;
-
-
 background:none;
-
 border:none;
-
 color:white;
-
 font-size:28px;
-
-
 margin-left:auto;
-
-
 cursor:pointer;
-
-
 }
-
-
-
-
 
 /* RESPONSIVO */
-
-
 @media(max-width:1100px){
-
-
 .nav,
-
 .header-actions{
-
-
 display:none;
-
-
 }
-
-
 
 .menu-toggle{
-
-
 display:block;
-
 margin-left:auto;
-
-
 }
-
-
 
 .header-container{
-
-
 height:80px;
-
-
 }
-
-
 
 .brand img{
-
-
 width:115px;
-
-
 }
-
-
 
 }
 
@@ -1054,21 +986,11 @@ gap:60px;
 
 
 .hero-content h1{
-
-
 font-size:
-
 clamp(42px,5vw,72px);
-
-
 line-height:1.05;
-
 font-weight:800;
-
-
 margin:25px 0;
-
-
 }
 
 
@@ -1426,11 +1348,7 @@ color:var(--gold);
 
 
 @media(max-width:1100px){
-
-
-  
-
-
+ 
     .hero-container{
         grid-template-columns:1fr;
         text-align:center;
@@ -1442,9 +1360,7 @@ color:var(--gold);
 
 .hero-content p{
 
-
 margin-left:auto;
-
 margin-right:auto;
 
 
@@ -1729,27 +1645,16 @@ gap:15px;
 
 
 .coin-highlight i{
-
-
 color:var(--gold);
-
 font-size:30px;
-
-
 }
 
 
 
 @media(max-width:900px){
-
-
 .coin-layout{
-
-
 grid-template-columns:1fr;
-
 text-align:center;
-
 
 }
 
@@ -1769,36 +1674,22 @@ justify-content:center;
    VITRINE PREMIUM DE PRÊMIOS
 ===================================================== */
 
-
 .prizes-grid{
-
 margin-top:70px;
-
 }
-
-
 
 .prize-card{
 
-
 overflow:hidden;
-
 padding:0;
-
-
 }
 
 
 
 
 .prize-image{
-
-
 height:300px;
-
 overflow:hidden;
-
-
 background:#080808;
 
 
@@ -2200,17 +2091,9 @@ var(--gold-light)
 }
 
 
-
-
-
 .progress-box span{
-
-
 font-size:12px;
-
 color:var(--muted);
-
-
 }
 
 
@@ -2279,7 +2162,6 @@ margin-bottom:5px;
 .levels-grid{
 
 margin-top:70px;
-
 
 }
 
@@ -2725,6 +2607,262 @@ padding:
 
 
 }  
+
+/* =====================================================
+   PLAYGROUND SOLYX
+   SOLYX FIDELIDADE V2.08
+===================================================== */
+
+.playground-section{
+    position:relative;
+    overflow:hidden;
+}
+
+/* FUNDO ILUMINADO */
+
+.playground-section::before{
+    content:"";
+    position:absolute;
+
+    width:600px;
+    height:600px;
+
+    left:-250px;
+    top:50%;
+
+    transform:translateY(-50%);
+
+    background:
+    radial-gradient(
+        circle,
+        rgba(181,18,23,.16),
+        transparent 65%
+    );
+
+    pointer-events:none;
+}
+
+
+/* CONTAINER PRINCIPAL */
+
+.playground-box{
+
+    position:relative;
+
+    padding:60px 50px;
+
+    border-radius:40px;
+
+    background:
+    linear-gradient(
+        145deg,
+        #181818,
+        #080808
+    );
+
+    border:
+    1px solid rgba(212,175,55,.25);
+
+    box-shadow:
+    0 25px 80px rgba(0,0,0,.45);
+
+}
+
+
+/* TÍTULO */
+
+.playground-heading{
+
+    max-width:850px;
+
+    margin:0 auto 50px;
+
+    text-align:center;
+
+}
+
+
+.playground-heading h2{
+
+    font-size:
+    clamp(34px,4vw,52px);
+
+    line-height:1.1;
+
+    margin:20px 0;
+
+}
+
+
+.playground-heading p{
+
+    color:var(--muted);
+
+    font-size:18px;
+
+    max-width:700px;
+
+    margin:auto;
+
+}
+
+
+/* CARDS DOS JOGOS */
+
+.playground-games{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(3,1fr);
+
+    gap:25px;
+
+}
+
+
+/* CARD */
+
+.playground-game{
+
+    padding:35px 25px;
+
+    text-align:center;
+
+    border-radius:25px;
+
+    background:
+    rgba(255,255,255,.04);
+
+    border:
+    1px solid rgba(255,255,255,.08);
+
+    transition:.35s;
+
+}
+
+
+.playground-game:hover{
+
+    transform:translateY(-8px);
+
+    border-color:
+    rgba(212,175,55,.5);
+
+    box-shadow:
+    0 20px 45px rgba(0,0,0,.35);
+
+}
+
+
+/* ÍCONE */
+
+.playground-icon{
+
+    width:80px;
+
+    height:80px;
+
+    margin:0 auto 20px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:38px;
+
+    background:
+    rgba(212,175,55,.12);
+
+    color:var(--gold);
+
+}
+
+
+.playground-game h3{
+
+    font-size:23px;
+
+    margin-bottom:12px;
+
+}
+
+
+.playground-game p{
+
+    color:var(--muted);
+
+    font-size:14px;
+
+    line-height:1.7;
+
+}
+
+
+/* CHAMADA SXC */
+
+.playground-sxc{
+
+    margin-top:40px;
+
+    padding:22px 25px;
+
+    border-radius:20px;
+
+    text-align:center;
+
+    background:
+    rgba(212,175,55,.08);
+
+    border:
+    1px solid rgba(212,175,55,.18);
+
+}
+
+
+.playground-sxc strong{
+
+    color:var(--gold-light);
+
+}
+
+
+.playground-sxc span{
+
+    color:var(--muted);
+
+}
+
+
+/* RESPONSIVO */
+
+@media(max-width:900px){
+
+    .playground-box{
+
+        padding:45px 25px;
+
+    }
+
+
+    .playground-games{
+
+        grid-template-columns:1fr;
+
+    }
+
+
+    .playground-heading h2{
+
+        font-size:36px;
+
+    }
+
+}
   
 /* =====================================================
    INDICAÇÃO
@@ -5048,7 +5186,184 @@ Cliente Plus
 </div>
 
 
-</section>  
+</section> 
+
+<!-- =====================================================
+     PLAYGROUND SOLYX
+     SOLYX FIDELIDADE V2.08
+===================================================== -->
+
+<section class="section playground-section">
+
+<div class="container">
+
+
+<div class="playground-box">
+
+
+<!-- TÍTULO -->
+
+<div class="playground-heading">
+
+
+<span class="badge badge-gold">
+
+PLAYGROUND SOLYX
+
+</span>
+
+
+<h2>
+
+Seus SolyxCoins
+também viram diversão.
+
+</h2>
+
+
+<p>
+
+Além de acumular benefícios,
+você pode utilizar seus SolyxCoins
+para participar de experiências
+interativas e concorrer a prêmios.
+
+</p>
+
+
+</div>
+
+
+
+<!-- JOGOS -->
+
+<div class="playground-games">
+
+
+<!-- ROLETA -->
+
+<div class="playground-game reveal">
+
+
+<div class="playground-icon">
+
+<i class="bi bi-disc"></i>
+
+</div>
+
+
+<h3>
+
+Roleta de Prêmios
+
+</h3>
+
+
+<p>
+
+Gire a roleta e concorra a
+prêmios instantâneos, bônus em
+SolyxCoins e vouchers de desconto.
+
+</p>
+
+
+</div>
+
+
+
+<!-- MÁQUINA -->
+
+<div class="playground-game reveal">
+
+
+<div class="playground-icon">
+
+<i class="bi bi-controller"></i>
+
+</div>
+
+
+<h3>
+
+Máquina de Bichinhos
+
+</h3>
+
+
+<p>
+
+Tente capturar brindes, cupons
+especiais de cashback ou
+pontuações extras de SXC.
+
+</p>
+
+
+</div>
+
+
+
+<!-- PESCARIA -->
+
+<div class="playground-game reveal">
+
+
+<div class="playground-icon">
+
+<i class="bi bi-water"></i>
+
+</div>
+
+
+<h3>
+
+Pescaria Premiada
+
+</h3>
+
+
+<p>
+
+Participe das campanhas sazonais
+e concorra a recompensas exclusivas
+em períodos especiais.
+
+</p>
+
+
+</div>
+
+
+</div>
+
+
+
+<!-- SXC -->
+
+<div class="playground-sxc">
+
+<strong>
+
+🎟️ Seus SolyxCoins podem dar direito
+a fichas para jogar no Playground.
+
+</strong>
+
+<br>
+
+<span>
+
+As regras, custos em SXC e limites de jogadas
+são informados no próprio ambiente dos jogos.
+
+</span>
+</div>
+</div>
+</div>
+</section>
+
+
   
 <!-- =====================================================
      PROGRAMA DE INDICAÇÃO
