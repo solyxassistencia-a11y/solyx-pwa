@@ -1,4 +1,4 @@
-const CACHE_NAME = "solyx-v5";
+const CACHE_NAME = "solyx-v6";
 
 const urlsToCache = [
   "/"
