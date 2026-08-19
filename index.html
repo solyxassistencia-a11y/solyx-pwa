@@ -92,39 +92,25 @@ viewport-fit=cover"
 
 
       /* CORES DA MARCA */
-
       --primary:#B51217;
       --primary-hover:#D81E23;
       --gold:#D4AF37;
-
       --gold-light:#FFD95A;
 
-
-
       /* TEXTOS */
-
       --text:#F8F8F8;
-
       --muted:#A4A4A4;
 
-
-
       /* ESTADOS */
-
       --success:#15B86A;
 
 
 
       /* BORDAS */
-
       --border:
-
       rgba(255,255,255,.08);
 
-
-
       /* SOMBRAS */
-
       --shadow-sm:
 
       0 5px 15px rgba(0,0,0,.25);
@@ -4467,29 +4453,6 @@ viewport-fit=cover"
       });
  </script>
 
-    <script>
-      if ('serviceWorker' in navigator) {
-
-          window.addEventListener('load', () => {
-
-              navigator.serviceWorker.register('./service-worker.js')
-
-                  .then(reg => {
-
-                      console.log('✅ Service Worker registrado!', reg);
-
-                  })
-
-                  .catch(err => {
-
-                      console.error('❌ Erro ao registrar:', err);
-
-                  });
-
-          });
-
-      }
-    </script>
 
     <!--IDENTIDADE VISUAL FIDELIDADE.NET.BR-->
     <script>
@@ -4613,7 +4576,16 @@ viewport-fit=cover"
           injetarManifestCliente(iden);
       }
     </script>
-
+<script>
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            // Removida a barra (/) antes de sw.js
+            navigator.serviceWorker.register('sw.js')
+                .then(reg => console.log('APP Fidelidade - Modo Offline ativado com sucesso!'))
+                .catch(err => console.log('Falha no Service Worker:', err));
+        });
+    }
+</script>
 
   </body>
 </html>
