@@ -4572,7 +4572,7 @@ viewport-fit=cover"
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
             // Removida a barra (/) antes de sw.js
-            navigator.serviceWorker.register('sw.js')
+           navigator.serviceWorker.register('./service-worker.js')
                 .then(reg => console.log('APP Fidelidade - Modo Offline ativado com sucesso!'))
                 .catch(err => console.log('Falha no Service Worker:', err));
         });
