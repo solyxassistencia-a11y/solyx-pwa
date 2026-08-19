@@ -22,6 +22,8 @@ viewport-fit=cover"
     />
     <meta name="apple-mobile-web-app-title" content="Solyx Fidelidade" />
 
+    <link rel="manifest" href="./manifest.json">
+
     <link
       rel="apple-touch-icon"
       href="https://www.dropbox.com/scl/fi/281k0uzh03t551mw3ki4e/Ico_SF_100x100.png?rlkey=9f3xnu1bfv5xhl8l5jhhmai2d&raw=1"
@@ -4618,50 +4620,6 @@ viewport-fit=cover"
       }
     </script>
 
-    <script>
-  function injetarManifestCliente(iden) {
-    // 1. Pega os dados do cliente
-    const nomeApp = window.NOME_PROGRAMA || "Solyx Fidelidade";
-    const nomeCurto = window.PRIMEIRO_NOME || "Solyx";
-    const corTema = iden.BG_COR1 || "#B51217"; // Puxa do Sheets ou usa o padrão
-    const corFundo = iden.BG_COR2 || "#050505";
-    
-    // ATENÇÃO AQUI: Coloque a URL do ícone do App do Cliente que está no seu Sheets ou deixe a padrão
-    const iconeCliente = "https://www.dropbox.com/scl/fi/ip6z1ggdrkatb842mwdst/Icon_SF_512x512.png?rlkey=v1u4dxlq947v27xn4u06ry23b&raw=1"; 
-
-    // 2. Monta o arquivo Manifest em texto
-    const manifestJSON = {
-        "name": nomeApp,
-        "short_name": nomeCurto,
-        "start_url": window.location.href, // O app instalado sempre vai abrir essa tela do GitHub primeiro e depois ir pro Blogger
-        "display": "standalone", // Faz parecer um App nativo (sem barra de navegação)
-        "background_color": corFundo,
-        "theme_color": corTema,
-        "icons": [
-            {
-                "src": iconeCliente,
-                "sizes": "512x512",
-                "type": "image/png",
-                "purpose": "any maskable"
-            }
-        ]
-    };
-
-    // 3. Transforma o texto em um arquivo virtual
-    const stringManifest = JSON.stringify(manifestJSON);
-    const blob = new Blob([stringManifest], { type: 'application/json' });
-    const manifestURL = URL.createObjectURL(blob);
-
-    // 4. Injeta no HTML do Cliente
-    let linkManifest = document.querySelector('link[rel="manifest"]');
-    if (!linkManifest) {
-        linkManifest = document.createElement('link');
-        linkManifest.rel = 'manifest';
-        document.head.appendChild(linkManifest);
-    }
-    linkManifest.href = manifestURL;
-}
-    </script>
 
   </body>
 </html>
