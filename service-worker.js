@@ -1,8 +1,8 @@
-const CACHE_NAME = "AppFidelidade-v11";
-const OFFLINE_URL = "/offline.html"; // A sua página do Quiz
+const CACHE_NAME = "AppFidelidade-v12"; // Mudamos para v11 para forçar a atualização!
+const OFFLINE_URL = "offline.html"; // Sem a barra (/) no início!
 
 const urlsToCache = [
-  "/",
+  "./", // Ponto e barra significa "A página atual (index)"
   OFFLINE_URL
 ];
 
@@ -10,9 +10,10 @@ self.addEventListener("install", event => {
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then(cache => {
-          // Salva a página principal e o Quiz na memória do celular na instalação
+          // Salva a página principal e o Quiz na memória
           return cache.addAll(urlsToCache);
       })
+      .catch(err => console.error("Erro ao fazer cache dos arquivos:", err))
   );
 });
 
@@ -20,11 +21,9 @@ self.addEventListener("fetch", event => {
   event.respondWith(
     caches.match(event.request)
       .then(response => {
-        // Tenta puxar do cache primeiro. Se não achar, tenta buscar na internet (fetch)
         return response || fetch(event.request).catch(() => {
-            // SE A INTERNET CAIR (deu erro no fetch) E O USUÁRIO QUISER ABRIR A PÁGINA...
+            // Se a internet cair e for uma navegação de página
             if (event.request.mode === 'navigate') {
-                // ... ELE EXIBE O QUIZ OFFLINE QUE ESTÁ SALVO NO CACHE!
                 return caches.match(OFFLINE_URL);
             }
         });
