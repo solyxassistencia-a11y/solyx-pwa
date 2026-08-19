@@ -1,4 +1,4 @@
-const CACHE_NAME = "AppFidelidade-v12"; // Mudamos para v11 para forçar a atualização!
+const CACHE_NAME = "AppFidelidade-v13"; // Mudamos para v11 para forçar a atualização!
 const OFFLINE_URL = "offline.html"; // Sem a barra (/) no início!
 
 const urlsToCache = [
