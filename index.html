@@ -11,7 +11,7 @@ viewport-fit=cover"
     />
 
     
-    <title>Solyx Fidelidade</title>
+    <title>Programa de Fidelização de Clientes</title>
 
     <meta name="theme-color" content="#B51217" />
     <meta name="mobile-web-app-capable" content="yes" />
@@ -94,10 +94,7 @@ viewport-fit=cover"
       /* CORES DA MARCA */
 
       --primary:#B51217;
-
       --primary-hover:#D81E23;
-
-
       --gold:#D4AF37;
 
       --gold-light:#FFD95A;
@@ -4205,25 +4202,22 @@ viewport-fit=cover"
         </div>
       </div>
     </section>
-
+<script>
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('/sw.js')
+                .then(reg => console.log('APP Fidelidade - Modo Offline ativado com sucesso!'))
+                .catch(err => console.log('Falha no Service Worker:', err));
+        });
+    }
+</script>
     <script>
-
-
       document.querySelectorAll(".faq-question")
       .forEach(button=>{
-
-
       button.addEventListener("click",()=>{
-
-
       const item = button.parentElement;
-
-
       item.classList.toggle("active");
-
-
-      });
-
+    });
 
       });
     </script>
