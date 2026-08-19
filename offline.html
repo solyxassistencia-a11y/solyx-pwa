@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Educativo Offline</title>
+    <style>
+        :root {
+            --primary: #4F46E5;
+            --primary-hover: #4338CA;
+            --success: #10B981;
+            --danger: #EF4444;
+            --bg-color: #F3F4F6;
+            --card-bg: #FFFFFF;
+            --text-main: #1F2937;
+            --text-muted: #6B7280;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 1rem;
+        }
+
+        .container {
+            background: var(--card-bg);
+            width: 100%;
+            max-width: 600px;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        h1 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Menu Styles */
+        .grid-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn {
+            background-color: #E5E7EB;
+            color: var(--text-main);
+            border: 2px solid transparent;
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-weight: 600;
+        }
+
+        .btn:hover {
+            background-color: #D1D5DB;
+        }
+
+        .btn.selected {
+            background-color: var(--primary);
+            color: white;
+            border-color: var(--primary-hover);
+        }
+
+        .btn-start {
+            background-color: var(--success);
+            color: white;
+            font-size: 1.25rem;
+            padding: 1rem 2rem;
+            width: 100%;
+            margin-top: 1rem;
+        }
+
+        .btn-start:hover {
+            background-color: #059669;
+        }
+
+        .btn-start:disabled {
+            background-color: #9CA3AF;
+            cursor: not-allowed;
+        }
+
+        /* Game Styles */
+        .header-game {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--bg-color);
+        }
+
+        .stats span {
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .timer {
+            color: var(--danger);
+            font-weight: bold;
+            font-size: 1.25rem;
+            background: #FEE2E2;
+            padding: 0.25rem 0.75rem;
+            border-radius: 99px;
+        }
+
+        .question {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            font-weight: 500;
+        }
+
+        .options-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .option-btn {
+            background: white;
+            border: 2px solid #E5E7EB;
+            padding: 1rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: left;
+        }
+
+        .option-btn:hover {
+            border-color: var(--primary);
+            background: #EEF2FF;
+        }
+
+        .option-btn.correct {
+            background-color: var(--success);
+            color: white;
+            border-color: var(--success);
+        }
+
+        .option-btn.wrong {
+            background-color: var(--danger);
+            color: white;
+            border-color: var(--danger);
+        }
+
+        /* Results */
+        .score-display {
+            font-size: 4rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin: 1rem 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- AVISO OFFLINE -->
+        <div id="aviso-offline-screen" class="container">
+            <div style="text-align: center;">
+                <h1 style="color: var(--danger); margin-bottom: 15px; font-size: 2rem;">Ops! Sem Conexão 📡</h1>
+                <p style="color: var(--text-muted); margin-bottom: 25px; font-size: 1.1rem; line-height: 1.5;">
+                    Parece que a sua internet caiu ou o sinal está muito fraco para acessar seu aplicativo no momento.
+                </p>
+                <p style="color: var(--text-main); margin-bottom: 25px; font-weight: bold;">
+                    Enquanto aguardamos a conexão voltar, que tal testar seus conhecimentos no nosso Quiz?
+                </p>
+                
+                <button onclick="iniciarMenuQuiz()" style="background: var(--primary); color: white; border: none; width: 100%; padding: 15px; border-radius: 8px; font-size: 1.1rem; font-weight: bold; cursor: pointer; margin-bottom: 15px; transition: 0.3s;">
+                    🎮 Sim, Jogar Quiz!
+                </button>
+                
+                <button onclick="window.location.reload()" style="background: transparent; color: var(--primary); border: 2px solid var(--primary); width: 100%; padding: 15px; border-radius: 8px; font-size: 1.1rem; font-weight: bold; cursor: pointer; transition: 0.3s;">
+                    🔄 Tentar Reconectar
+                </button>
+            </div>
+        </div>
+        <!-- TELA DE MENU -->
+        <div id="menu-screen" class="container hidden">
+            <h1>Quiz Educativo</h1>
+            
+            <h3>1. Escolha a Matéria</h3>
+            <div class="grid-options" id="subject-grid">
+                <button class="btn" onclick="selectSubject(this, 'Português')">Português</button>
+                <button class="btn" onclick="selectSubject(this, 'Matemática')">Matemática</button>
+                <button class="btn" onclick="selectSubject(this, 'Artes')">Artes</button>
+                <button class="btn" onclick="selectSubject(this, 'Inglês')">Inglês</button>
+                <button class="btn" onclick="selectSubject(this, 'Espanhol')">Espanhol</button>
+                <button class="btn" onclick="selectSubject(this, 'Química')">Química</button>
+                <button class="btn" onclick="selectSubject(this, 'Geografia')">Geografia</button>
+                <button class="btn" onclick="selectSubject(this, 'História')">História</button>
+                <button class="btn" onclick="selectSubject(this, 'Ciências')">Ciências</button>
+            </div>
+
+            <h3>2. Escolha o Nível</h3>
+            <div class="grid-options" id="difficulty-grid">
+                <button class="btn" onclick="selectDifficulty(this, 'Fácil')">Fácil</button>
+                <button class="btn" onclick="selectDifficulty(this, 'Médio')">Médio</button>
+                <button class="btn" onclick="selectDifficulty(this, 'Difícil')">Difícil</button>
+            </div>
+
+            <button id="btn-start" class="btn btn-start" onclick="startGame()" disabled>Iniciar Jogo</button>
+        </div>
+
+        <!-- TELA DO JOGO -->
+        <div id="game-screen" class="hidden">
+            <div class="header-game">
+                <div class="stats">
+                    Pts: <span id="score-display">0</span> | Nível: <span id="level-display"></span>
+                </div>
+                <div class="timer" id="timer-display">15s</div>
+            </div>
+            
+            <div id="question-text" class="question">Carregando pergunta...</div>
+            
+            <div class="options-container" id="options-container">
+                <!-- Botões gerados via JS -->
+            </div>
+        </div>
+
+        <!-- TELA DE RESULTADO -->
+        <div id="result-screen" class="hidden">
+            <h2>Fim de Jogo!</h2>
+            <p id="result-message">Você concluiu o quiz.</p>
+            <div class="score-display" id="final-score">0</div>
+            <p style="margin-bottom: 2rem;">pontos conquistados</p>
+            <button class="btn btn-start" onclick="returnToMenu()">Jogar Novamente</button>
+        </div>
+    </div>
+
+    <script>
+        // BANCO DE QUESTÕES
+        // Para adicionar mais perguntas, basta seguir a mesma estrutura abaixo
+        const perguntas = {
+            "Português": {
+                "Fácil": [
+                    { q: "Qual o plural de 'Cidadão'?", options: ["Cidadãos", "Cidadões", "Cidadães", "Cidadão"], ans: 0 },
+                    { q: "Qual é o antônimo de 'Bom'?", options: ["Péssimo", "Mau", "Mal", "Ruim"], ans: 1 }
+                ],
+                "Médio": [
+                    { q: "Identifique a figura de linguagem: 'Chorei rios de lágrimas'.", options: ["Metáfora", "Eufemismo", "Hipérbole", "Ironia"], ans: 2 }
+                ],
+                "Difícil": [
+                    { q: "Quem escreveu 'Memórias Póstumas de Brás Cubas'?", options: ["José de Alencar", "Aluísio Azevedo", "Machado de Assis", "Graciliano Ramos"], ans: 2 }
+                ]
+            },
+            "Matemática": {
+                "Fácil": [
+                    { q: "Quanto é 8 x 7?", options: ["54", "56", "64", "62"], ans: 1 }
+                ],
+                "Médio": [
+                    { q: "Qual a raiz quadrada de 144?", options: ["12", "14", "16", "18"], ans: 0 }
+                ],
+                "Difícil": [
+                    { q: "Qual é o valor de Pi (aproximado a duas casas)?", options: ["3.10", "3.12", "3.14", "3.16"], ans: 2 }
+                ]
+            },
+            "Artes": {
+                "Fácil": [
+                    { q: "Qual destas é uma cor primária?", options: ["Verde", "Laranja", "Roxo", "Azul"], ans: 3 }
+                ],
+                "Médio": [
+                    { q: "Quem pintou a 'Mona Lisa'?", options: ["Van Gogh", "Michelangelo", "Leonardo da Vinci", "Picasso"], ans: 2 }
+                ],
+                "Difícil": [
+                    { q: "O movimento Cubista foi fundado por:", options: ["Salvador Dalí", "Pablo Picasso", "Claude Monet", "Edvard Munch"], ans: 1 }
+                ]
+            },
+            "Inglês": {
+                "Fácil": [
+                    { q: "Como se diz 'Maçã' em inglês?", options: ["Orange", "Banana", "Apple", "Grape"], ans: 2 }
+                ],
+                "Médio": [
+                    { q: "Qual é o passado do verbo 'To Go'?", options: ["Goed", "Gone", "Went", "Going"], ans: 2 }
+                ],
+                "Difícil": [
+                    { q: "O que significa a expressão 'Piece of cake'?", options: ["Pedaço de bolo", "Muito fácil", "Muito caro", "Impossível"], ans: 1 }
+                ]
+            },
+            "Espanhol": {
+                "Fácil": [
+                    { q: "O que significa 'Hola'?", options: ["Adeus", "Oi/Olá", "Obrigado", "Por favor"], ans: 1 }
+                ],
+                "Médio": [
+                    { q: "O que é um 'Cachorro' em espanhol?", options: ["Um cão", "Um filhote (qualquer animal)", "Um gato", "Um pássaro"], ans: 1 }
+                ],
+                "Difícil": [
+                    { q: "Qual a tradução correta para 'Exquisito'?", options: ["Esquisito", "Estranho", "Delicioso/Saboroso", "Feio"], ans: 2 }
+                ]
+            },
+            "Química": {
+                "Fácil": [
+                    { q: "Qual é o símbolo químico da Água?", options: ["CO2", "O2", "H2O", "NaCl"], ans: 2 }
+                ],
+                "Médio": [
+                    { q: "Qual é o elemento mais abundante no universo?", options: ["Oxigênio", "Carbono", "Hélio", "Hidrogênio"], ans: 3 }
+                ],
+                "Difícil": [
+                    { q: "Qual é o número atômico do Carbono?", options: ["6", "12", "14", "8"], ans: 0 }
+                ]
+            },
+            "Geografia": {
+                "Fácil": [
+                    { q: "Qual é a capital do Brasil?", options: ["São Paulo", "Rio de Janeiro", "Brasília", "Salvador"], ans: 2 }
+                ],
+                "Médio": [
+                    { q: "Qual o maior continente do planeta?", options: ["América", "África", "Ásia", "Europa"], ans: 2 }
+                ],
+                "Difícil": [
+                    { q: "Qual é o país mais populoso do mundo (dados de 2023/2024)?", options: ["China", "Índia", "Estados Unidos", "Indonésia"], ans: 1 }
+                ]
+            },
+            "História": {
+                "Fácil": [
+                    { q: "Quem descobriu o Brasil?", options: ["Cristóvão Colombo", "Pedro Álvares Cabral", "Vasco da Gama", "Dom Pedro I"], ans: 1 }
+                ],
+                "Médio": [
+                    { q: "Em que ano começou a Segunda Guerra Mundial?", options: ["1914", "1939", "1945", "1929"], ans: 1 }
+                ],
+                "Difícil": [
+                    { q: "Quem foi o primeiro imperador romano?", options: ["Júlio César", "Nero", "Augusto", "Calígula"], ans: 2 }
+                ]
+            },
+            "Ciências": {
+                "Fácil": [
+                    { q: "Qual planeta é conhecido como o Planeta Vermelho?", options: ["Vênus", "Marte", "Júpiter", "Saturno"], ans: 1 }
+                ],
+                "Médio": [
+                    { q: "Onde ocorre a fotossíntese nas plantas?", options: ["Raiz", "Caule", "Folhas", "Flores"], ans: 2 }
+                ],
+                "Difícil": [
+                    { q: "Qual molécula armazena a informação genética dos seres vivos?", options: ["RNA", "Proteína", "Carboidrato", "DNA"], ans: 3 }
+                ]
+            }
+        };
+
+        // VARIÁVEIS DE ESTADO
+        let selectedSubject = "";
+        let selectedDifficulty = "";
+        let currentQuestions = [];
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let timer;
+        let timeLeft = 15;
+        let pointsPerQuestion = 10;
+
+        // FUNÇÕES DO MENU
+        function selectSubject(btn, subject) {
+            document.querySelectorAll('#subject-grid .btn').forEach(b => b.classList.remove('selected'));
+            btn.classList.add('selected');
+            selectedSubject = subject;
+            checkStartReady();
+        }
+
+        function selectDifficulty(btn, difficulty) {
+            document.querySelectorAll('#difficulty-grid .btn').forEach(b => b.classList.remove('selected'));
+            btn.classList.add('selected');
+            selectedDifficulty = difficulty;
+            
+            // Define os pontos ganhos por acerto dependendo da dificuldade
+            if(difficulty === 'Fácil') pointsPerQuestion = 10;
+            if(difficulty === 'Médio') pointsPerQuestion = 20;
+            if(difficulty === 'Difícil') pointsPerQuestion = 30;
+
+            checkStartReady();
+        }
+
+        function checkStartReady() {
+            const startBtn = document.getElementById('btn-start');
+            if (selectedSubject !== "" && selectedDifficulty !== "") {
+                startBtn.disabled = false;
+            }
+        }
+
+        // FUNÇÕES DO JOGO
+        function startGame() {
+            // Verificar se temos perguntas cadastradas para esta seleção
+            if(perguntas[selectedSubject] && perguntas[selectedSubject][selectedDifficulty]) {
+                // Clona o array para podermos embaralhar ou remover itens se necessário
+                currentQuestions = [...perguntas[selectedSubject][selectedDifficulty]];
+                
+                // Se não houver perguntas, avisa e volta
+                if(currentQuestions.length === 0) {
+                    alert("Ainda não há perguntas cadastradas para esta categoria.");
+                    return;
+                }
+
+                score = 0;
+                currentQuestionIndex = 0;
+                document.getElementById('score-display').innerText = score;
+                document.getElementById('level-display').innerText = selectedDifficulty;
+                
+                document.getElementById('menu-screen').classList.add('hidden');
+                document.getElementById('result-screen').classList.add('hidden');
+                document.getElementById('game-screen').classList.remove('hidden');
+
+                loadQuestion();
+            } else {
+                alert("Erro ao carregar as questões.");
+            }
+        }
+
+        function loadQuestion() {
+            clearInterval(timer);
+            timeLeft = 15;
+            document.getElementById('timer-display').innerText = timeLeft + "s";
+            
+            const q = currentQuestions[currentQuestionIndex];
+            document.getElementById('question-text').innerText = q.q;
+            
+            const optionsContainer = document.getElementById('options-container');
+            optionsContainer.innerHTML = '';
+            
+            q.options.forEach((opt, index) => {
+                const btn = document.createElement('button');
+                btn.className = 'option-btn';
+                btn.innerText = opt;
+                btn.onclick = () => checkAnswer(index, btn);
+                optionsContainer.appendChild(btn);
+            });
+
+            startTimer();
+        }
+
+        function startTimer() {
+            timer = setInterval(() => {
+                timeLeft--;
+                document.getElementById('timer-display').innerText = timeLeft + "s";
+                
+                if(timeLeft <= 0) {
+                    clearInterval(timer);
+                    showTimeOut();
+                }
+            }, 1000);
+        }
+
+        function checkAnswer(selectedIndex, btnElement) {
+            clearInterval(timer);
+            const correctIndex = currentQuestions[currentQuestionIndex].ans;
+            const buttons = document.querySelectorAll('.option-btn');
+            
+            // Desabilita botões
+            buttons.forEach(b => b.style.pointerEvents = 'none');
+
+            if (selectedIndex === correctIndex) {
+                btnElement.classList.add('correct');
+                score += pointsPerQuestion;
+                document.getElementById('score-display').innerText = score;
+                setTimeout(nextQuestion, 1000);
+            } else {
+                btnElement.classList.add('wrong');
+                buttons[correctIndex].classList.add('correct');
+                setTimeout(() => endGame("Você errou a resposta!"), 1500);
+            }
+        }
+
+        function showTimeOut() {
+            const correctIndex = currentQuestions[currentQuestionIndex].ans;
+            const buttons = document.querySelectorAll('.option-btn');
+            buttons.forEach(b => b.style.pointerEvents = 'none');
+            buttons[correctIndex].classList.add('correct');
+            
+            setTimeout(() => endGame("O tempo esgotou!"), 1500);
+        }
+
+        function nextQuestion() {
+            currentQuestionIndex++;
+            if (currentQuestionIndex < currentQuestions.length) {
+                loadQuestion();
+            } else {
+                endGame("Parabéns! Você respondeu todas as perguntas.");
+            }
+        }
+
+        function endGame(message) {
+            clearInterval(timer);
+            document.getElementById('game-screen').classList.add('hidden');
+            document.getElementById('result-screen').classList.remove('hidden');
+            
+            document.getElementById('result-message').innerText = message;
+            document.getElementById('final-score').innerText = score;
+        }
+
+        function returnToMenu() {
+            document.getElementById('result-screen').classList.add('hidden');
+            document.getElementById('menu-screen').classList.remove('hidden');
+            
+            // Limpa as seleções
+            selectedSubject = "";
+            selectedDifficulty = "";
+            document.querySelectorAll('.btn').forEach(b => b.classList.remove('selected'));
+            document.getElementById('btn-start').disabled = true;
+        }
+        function iniciarMenuQuiz() {
+    // Esconde o aviso de sem internet
+    document.getElementById('aviso-offline-screen').style.display = 'none';
+    
+    // Mostra o menu principal do Quiz
+    document.getElementById('menu-screen').classList.remove('hidden');
+}
+    </script>
+</body>
+</html>
