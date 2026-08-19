@@ -4188,15 +4188,7 @@ viewport-fit=cover"
         </div>
       </div>
     </section>
-<script>
-    if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-            navigator.serviceWorker.register('/sw.js')
-                .then(reg => console.log('APP Fidelidade - Modo Offline ativado com sucesso!'))
-                .catch(err => console.log('Falha no Service Worker:', err));
-        });
-    }
-</script>
+
     <script>
       document.querySelectorAll(".faq-question")
       .forEach(button=>{
