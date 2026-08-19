@@ -280,7 +280,7 @@
     </style>
 </head>
 <body>
-
+<audio id="intro-music" src="./Brick-Game_intro.mp3" preload="auto"></audio>
 <div class="console">
     <!-- Tela -->
     <div class="screen-bezel">
@@ -338,7 +338,7 @@
     let isPowerOn = false; // Controle de Liga/Desliga
     
     // Música de Introdução
-    const introAudio = new Audio('./Brick-Game_intro.mp3');
+    const introAudio = document.getElementById('intro-music');
 
     function playSound(type) {
         if (!soundEnabled || !isPowerOn) return;
