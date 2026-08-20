@@ -1,4 +1,4 @@
-const CACHE_NAME = "AppFidelidade-v17";
+const CACHE_NAME = "AppFidelidade-v18";
 const ARQUIVOS_PARA_CACHEAR = [
   './offline.html',
   './EduQuiz_Offline.html',
