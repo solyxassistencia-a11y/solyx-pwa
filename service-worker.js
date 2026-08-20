@@ -2,7 +2,8 @@ const CACHE_NAME = "AppFidelidade-v17";
 const ARQUIVOS_PARA_CACHEAR = [
   './offline.html',
   './EduQuiz_Offline.html',
-  './Brick_Game_5_em_1.html'
+  './Brick_Game_5_em_1.html',
+  './Vintage_Calculadora.html'
   // Quando quiser adicionar novos jogos no futuro, basta colocar o nome do arquivo aqui!
 ];
 
