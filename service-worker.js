@@ -1,10 +1,10 @@
-const CACHE_NAME = "AppFidelidade-v22";
+const CACHE_NAME = "AppFidelidade-v23";
 const ARQUIVOS_PARA_CACHEAR = [
   './offline.html',
   './fid_game1.html',
   './fid_game2.html',
   './fid_game3.html',
-  './fid_game4.html',
+  './fid_game4.html'
   // Quando quiser adicionar novos jogos no futuro, basta colocar o nome do arquivo aqui!
 ];
 
