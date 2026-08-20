@@ -358,7 +358,13 @@
 </head>
 <body>
 
+<!-- Botão discreto para sair do jogo / voltar para a página anterior -->
+<button id="game-exit" type="button" aria-label="Sair do jogo" title="Sair do jogo">
+    <span class="game-exit-icon" aria-hidden="true">↩</span>
+    <span class="game-exit-label">SAIR</span>
+</button>
 
+<body>
 
 <div class="console">
     <!-- Tela -->
@@ -409,11 +415,6 @@
     </div>
 </div>
 
-<!-- Botão discreto para sair do jogo / voltar para a página anterior -->
-<button id="game-exit" type="button" aria-label="Sair do jogo" title="Sair do jogo">
-    <span class="game-exit-icon" aria-hidden="true">↩</span>
-    <span class="game-exit-label">SAIR</span>
-</button>
 <script>
     // --- SISTEMA DE ÁUDIO 8-BITS ---
     const AudioContext = window.AudioContext || window.webkitAudioContext;
