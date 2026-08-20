@@ -1,9 +1,10 @@
-const CACHE_NAME = "AppFidelidade-v21";
+const CACHE_NAME = "AppFidelidade-v22";
 const ARQUIVOS_PARA_CACHEAR = [
   './offline.html',
-  './EduQuiz_Offline.html',
-  './Brick_Game_5_em_1.html',
-  './Vintage_Calculadora.html'
+  './fid_game1.html',
+  './fid_game2.html',
+  './fid_game3.html',
+  './fid_game4.html',
   // Quando quiser adicionar novos jogos no futuro, basta colocar o nome do arquivo aqui!
 ];
 
