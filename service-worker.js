@@ -1,4 +1,4 @@
-const CACHE_NAME = "AppFidelidade-v25";
+const CACHE_NAME = "AppFidelidade-v26";
 const ARQUIVOS_PARA_CACHEAR = [
   './offline.html',
   './fid_game1.html',
