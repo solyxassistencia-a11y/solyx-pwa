@@ -1,11 +1,11 @@
 /* ============================================================
-   SOLYX FIDELIDADE - SERVICE WORKER V3
+   FIDELIDADE.NET.BR - SERVICE WORKER
    PWA OFFLINE
    ============================================================
 /* ============================================================
    1. CONFIGURAÇÃO
    ============================================================ */
-const CACHE_NAME = "AppFidelidade-v29";
+const CACHE_NAME = "AppFidelidade-v30";
 const OFFLINE_PAGE = "./offline.html";
 /*
  * Arquivos que devem existir obrigatoriamente
@@ -18,7 +18,9 @@ const PRECACHE_FILES = [
     "./fid_game3.html",
     "./fid_game4.html",
     "./fid_game5.html",
-    "./fid_game6.html"
+    "./fid_game6.html",
+    "./fid_game7.html",   
+    "./fid_game8.html"
 ];
 
 /* ============================================================
@@ -26,20 +28,20 @@ const PRECACHE_FILES = [
    ============================================================ */
 self.addEventListener("install", event => {
     console.log(
-        "[Solyx SW V3] Instalando:",
+        "[Fidelidade SW V3] Instalando:",
         CACHE_NAME
     );
     event.waitUntil(
         caches.open(CACHE_NAME)
             .then(cache => {
                 console.log(
-                    "[Solyx SW V3] Criando cache offline..."
+                    "[Fidelidade SW V3] Criando cache offline..."
                 );
                 return cache.addAll(PRECACHE_FILES);
             })
             .then(() => {
                 console.log(
-                    "[Solyx SW V3] Arquivos offline armazenados."
+                    "[Fidelidade SW V3] Arquivos offline armazenados."
                 );
                 /*
                  * Ativa imediatamente a nova versão.
@@ -48,7 +50,7 @@ self.addEventListener("install", event => {
             })
             .catch(error => {
                 console.error(
-                    "[Solyx SW V3] ERRO NA INSTALAÇÃO:",
+                    "[Fidelidade SW V3] ERRO NA INSTALAÇÃO:",
                     error
                 );
                 throw error;
@@ -61,7 +63,7 @@ self.addEventListener("install", event => {
    ============================================================ */
 self.addEventListener("activate", event => {
     console.log(
-        "[Solyx SW V3] Ativando:",
+        "[Fidelidade SW V3] Ativando:",
         CACHE_NAME
     );
     event.waitUntil(
@@ -77,7 +79,7 @@ self.addEventListener("activate", event => {
                             cacheName !== CACHE_NAME
                         ) {
                             console.log(
-                                "[Solyx SW V3] Apagando cache antigo:",
+                                "[Fidelidade SW V3] Apagando cache antigo:",
                                 cacheName
                             );
                             return caches.delete(
@@ -90,7 +92,7 @@ self.addEventListener("activate", event => {
             })
             .then(() => {
                 console.log(
-                    "[Solyx SW V3] Service Worker ativo."
+                    "[Fidelidade SW V3] Service Worker ativo."
                 );
                 /*
                  * Assume imediatamente o controle
@@ -179,7 +181,7 @@ async function obterPaginaOffline() {
             <main>
                 <h1>Modo Offline</h1>
                 <p>
-                    Os jogos offline estão disponíveis.
+                    Os jogos offline estão disponíveis. Autalize a página!
                 </p>
             </main>
         </body>
@@ -214,7 +216,7 @@ function ehPaginaInicial(url) {
     const pathname =
         url.pathname;
     /*
-     * /solyx-pwa2/
+     * /solyx-pwa/
      */
     if (
         pathname.endsWith("/")
@@ -222,7 +224,7 @@ function ehPaginaInicial(url) {
         return true;
     }
     /*
-     * /solyx-pwa2/index.html
+     * /solyx-pwa/index.html
      */
     if (
         pathname.endsWith("/index.html")
@@ -263,7 +265,7 @@ self.addEventListener("fetch", event => {
             (async () => {
 
                 console.log(
-                    "[Solyx SW V3] Entrada do aplicativo:",
+                    "[Fidelidade SW V3] Entrada do aplicativo:",
                     request.url
                 );
                 /*
@@ -287,14 +289,14 @@ self.addEventListener("fetch", event => {
                         networkResponse.ok
                     ) {
                         console.log(
-                            "[Solyx SW V3] Online → index.html"
+                            "[Fidelidade SW V3] Online → index.html"
                         );
                         return networkResponse;
                     }
                 }
                 catch (error) {
                     console.log(
-                        "[Solyx SW V3] Internet indisponível."
+                        "[Fidelidade SW V3] Internet indisponível."
                     );
                 }
                 /*
@@ -313,7 +315,7 @@ self.addEventListener("fetch", event => {
                  * Entregamos diretamente offline.html.
                  */
                 console.log(
-                    "[Solyx SW V3] Offline → offline.html"
+                    "[Fidelidade SW V3] Offline → offline.html"
                 );
                 return obterPaginaOffline();
             })()
@@ -355,7 +357,7 @@ self.addEventListener("fetch", event => {
             if (cachedResponse) {
 
                 console.log(
-                    "[Solyx SW V3] CACHE:",
+                    "[Fidelidade SW V3] CACHE:",
                     request.url
                 );
                 return cachedResponse;
@@ -391,7 +393,7 @@ self.addEventListener("fetch", event => {
             }
             catch (error) {
                 console.warn(
-                    "[Solyx SW V3] Recurso indisponível:",
+                    "[Fidelidade SW V3] Recurso indisponível:",
                     request.url
                 );
                 /*
@@ -422,7 +424,7 @@ self.addEventListener("message", event => {
         event.data.action === "SKIP_WAITING"
     ) {
         console.log(
-            "[Solyx SW V3] SKIP_WAITING solicitado."
+            "[Fidelidade SW V3] SKIP_WAITING solicitado."
         );
         self.skipWaiting();
     }
@@ -431,6 +433,6 @@ self.addEventListener("message", event => {
    8. FINAL
    ============================================================ */
 console.log(
-    "[Solyx SW V3] Carregado:",
+    "[Fidelidade SW V3] Carregado:",
     CACHE_NAME
 );
