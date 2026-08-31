@@ -1,56 +1,36 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
   <head>
-    <meta charset="UTF-8" />
-
-    <meta
-      name="viewport"
-      content="width=device-width,
-initial-scale=1,
-viewport-fit=cover"
-    />
-
-    
     <title>Programa de Fidelização de Clientes</title>
-
+    <meta charset="UTF-8" />
+    <meta name="viewport"  content="width=device-width, initial-scale=1, viewport-fit=cover"  />
     <meta name="theme-color" content="#B51217" />
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta
-      name="apple-mobile-web-app-status-bar-style"
-      content="black-translucent"
-    />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="apple-mobile-web-app-title" content="Solyx Fidelidade" />
-
     <link rel="manifest" href="./manifest.json">
-
     <link
       rel="apple-touch-icon"
       href="https://www.dropbox.com/scl/fi/aerzmsvnnlsa6e14ket13/SF_512x512_Cliente.png?rlkey=tyn0narcis68k03is68sddtfs&raw=1"
     />
     <meta name="mobile-web-app-capable" content="yes" />
-
     <meta name="application-name" content="Solyx Fidelidade" />
-
     <meta name="msapplication-TileColor" content="#B51217" />
-
     <meta name="msapplication-tap-highlight" content="no" />
     <meta name="color-scheme" content="dark" />
-
     <link
       rel="icon"
       type="image/png"
       sizes="32x32"
       href="https://www.dropbox.com/scl/fi/aerzmsvnnlsa6e14ket13/SF_512x512_Cliente.png?rlkey=tyn0narcis68k03is68sddtfs&raw=1"
     />
-
     <link
       rel="icon"
       type="image/png"
       sizes="192x192"
       href="https://www.dropbox.com/scl/fi/aerzmsvnnlsa6e14ket13/SF_512x512_Cliente.png?rlkey=tyn0narcis68k03is68sddtfs&raw=1"
     />
-
     <!-- Fonte Oficial -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -74,112 +54,59 @@ viewport-fit=cover"
          V2.01.1
       ===================================================== */
 
-
       /* =====================================================
          VARIÁVEIS GLOBAIS
       ===================================================== */
-
       :root{
-
       /* BACKGROUNDS */
-
       --bg:#050505;
-
       --surface:#111111;
-
       --surface-2:#181818;
-
-
-
       /* CORES DA MARCA */
       --primary:#B51217;
       --primary-hover:#D81E23;
       --gold:#D4AF37;
       --gold-light:#FFD95A;
-
       /* TEXTOS */
       --text:#F8F8F8;
       --muted:#A4A4A4;
-
       /* ESTADOS */
       --success:#15B86A;
-
-
-
       /* BORDAS */
       --border:
       rgba(255,255,255,.08);
-
       /* SOMBRAS */
       --shadow-sm:
-
       0 5px 15px rgba(0,0,0,.25);
-
-
-
       --shadow-md:
-
       0 15px 40px rgba(0,0,0,.35);
-
-
-
       --shadow-premium:
-
       0 25px 80px rgba(0,0,0,.55);
-
-
-
       /* RAIO DOS COMPONENTES */
-
       --radius-sm:12px;
-
       --radius-md:20px;
-
       --radius-lg:32px;
-
-
-
       /* ESPAÇAMENTO */
-
       --space-xs:8px;
-
       --space-sm:16px;
-
       --space-md:24px;
-
       --space-lg:48px;
-
       --space-xl:80px;
-
       --space-2xl:120px;
-
-
-
       /* CONTAINER */
-
       --container:1400px;
-
-
       }
-
-
-
-
       /* =====================================================
          RESET GLOBAL
       ===================================================== */
-
       *{
       margin:0;
       padding:0;
       box-sizing:border-box;
       }
-
-
       html{
       scroll-behavior:smooth;
       }
-
       body{
       font-family:'Poppins',sans-serif;
       background:var(--bg);
@@ -187,266 +114,115 @@ viewport-fit=cover"
       line-height:1.6;
       overflow-x:hidden;
       }
-
-
-
       img{
       max-width:100%;
       display:block;
       }
-
-
-
       a{
       text-decoration:none;
       color:inherit;
       }
-
-
-
       button{
-
       font-family:inherit;
-
       border:none;
-
       cursor:pointer;
-
       }
-
-
-
       /* =====================================================
          CONTAINER
       ===================================================== */
-
-
       .container{
-
       width:100%;
       max-width:var(--container);
       margin:auto;
       padding-left:32px;
       padding-right:32px;
-
       }
-
-
-
-
       /* =====================================================
          SEÇÕES
       ===================================================== */
-
-
       .sf-section{
-
       padding:var(--space-2xl) 0;
-
       }
-
-
-
       .section-dark{
-
       background:var(--surface);
-
       }
-
-
-
-
-
-
-
       /* =====================================================
          GRID SYSTEM
       ===================================================== */
-
-
       .grid{
-
       display:grid;
-
       gap:var(--space-lg);
-
       }
-
-
-
       .grid-2{
-
       grid-template-columns:repeat(2,1fr);
-
       }
-
-
-
       .grid-3{
-
       grid-template-columns:repeat(3,1fr);
-
       }
-
-
-
       .grid-4{
-
       grid-template-columns:repeat(4,1fr);
-
       }
-
-
-
       /* =====================================================
          BOTÕES OFICIAIS
       ===================================================== */
-
-
       .btn{
-
-
       display:inline-flex;
-
       align-items:center;
-
       justify-content:center;
-
       gap:10px;
-
       padding:16px 34px;
-
       border-radius:50px;
-
       font-size:16px;
-
       font-weight:600;
-
       transition:.35s;
-
-      }
-
-
-
+      }    
       .btn-primary{
-
-
       background:var(--primary);
-
       color:white;
-
       box-shadow:
-
       0 10px 30px rgba(181,18,23,.35);
-
       }
-
-
-
       .btn-primary:hover{
-
       background:var(--primary-hover);
-
       transform:translateY(-3px);
-
       }
-
-
-
-
       .btn-gold{
-
-
       background:
-
       linear-gradient(
-
       135deg,
-
       var(--gold),
-
       var(--gold-light)
-
       );
-
-
       color:#111;
-
       }
-
-
-
       .btn-gold:hover{
-
       transform:translateY(-3px);
-
       box-shadow:var(--shadow-md);
-
       }
-
-
-
-
-
       .btn-outline{
-
-
       border:1px solid var(--border);
-
       background:transparent;
-
       color:white;
-
-
       }
-
-
-
       .btn-outline:hover{
-
       border-color:var(--gold);
-
       color:var(--gold);
-
       }
-
-
-
-
       /* =====================================================
          CARDS
       ===================================================== */
-
-
-      .card{
-
-
+     .card{
       background:var(--surface);
-
       border:
-
       1px solid var(--border);
-
       border-radius:var(--radius-md);
-
       padding:32px;
-
       transition:.35s;
-
-
       }
-
-
-
       .card:hover{
-
-
       transform:translateY(-8px);
-
       box-shadow:var(--shadow-md);
-
-
-      }
+     }
 
 
 
