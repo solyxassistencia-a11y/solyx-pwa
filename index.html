@@ -579,7 +579,7 @@
       display:flex;
       justify-content:center;
       }
-      .solyx-coin{
+      .coin-fidelidade{
       width:280px;
       height:280px;
       border-radius:50%;
@@ -601,7 +601,7 @@
       animation:
       coinFloat 5s ease-in-out infinite;
       }
-      .solyx-coin span{
+      .coin-fidelidade span{
       text-shadow:
       0 5px 15px rgba(0,0,0,.4);
       }
@@ -1254,7 +1254,7 @@ display:none; padding-left: 20px; }
       <div class="container">
         <div class="grid grid-2 coin-layout">
           <div class="coin-visual">
-            <div class="solyx-coin">
+            <div class="coin-fidelidade">
               <span class="letra-moeda-dinamica"></span>
             </div>
           </div>
@@ -2220,10 +2220,10 @@ display:none; padding-left: 20px; }
             // 1.1 SALVA AS VARIÁVEIS GLOBAIS - LOGO
             window.LOGO_URL = iden.Logo_URL || "";
             // 1.2 SALVA AS VARIÁVEIS GLOBAIS - NOME E MOEDA
-            window.CIFRAO_MOEDA = iden.Cifrao_Moeda || "SFC";
-            window.NOME_PROGRAMA = iden.Nome_Programa || "Fidelity Solyx";
+            window.CIFRAO_MOEDA = iden.Cifrao_Moeda || "";
+            window.NOME_PROGRAMA = iden.Nome_Programa || "";
             window.PRIMEIRO_NOME = iden.Nome_Programa ? iden.Nome_Programa.split(" ")[0] : "Fidelity";
-            window.NOME_MOEDA = iden.Nome_Moeda || "FidelityCoin(s)";
+            window.NOME_MOEDA = iden.Nome_Moeda || "";
             // Cria a versão no singular removendo o "(s)" do final do texto
             window.NOME_MOEDA_SINGULAR = window.NOME_MOEDA.replace(/\(s\)$/i, '');
             // Pega apenas a primeira letra do Cifrão (Ex: "S" de "SFC")
@@ -2245,7 +2245,7 @@ display:none; padding-left: 20px; }
             if (window.LOGO_URL) {
                         document.querySelectorAll('.logo-dinamica').forEach(logo => {
                             logo.src = window.LOGO_URL;
-                            logo.alt = window.NOME_PROGRAMA; // ✨ A MÁGICA AQUI: Injeta o nome no alt!
+                            logo.alt = window.NOME_PROGRAMA; // Injeta o nome no alt!
                         });
                     }
             document.querySelectorAll('.nome-dinamico').forEach(el => el.innerText = window.NOME_PROGRAMA);
@@ -2299,8 +2299,8 @@ display:none; padding-left: 20px; }
           const urlAtual = window.location.href;
 
           // 2. Puxa o nome da empresa e do programa da memória (Identidade Visual)
-          const primeiroNome = window.PRIMEIRO_NOME || "Solyx";
-          const nomePrograma = window.NOME_PROGRAMA || "Solyx Fidelidade";
+          const primeiroNome = window.PRIMEIRO_NOME || "";
+          const nomePrograma = window.NOME_PROGRAMA || "";
 
           // 3. Monta a mensagem usando quebras de linha normais (\n) e emojis
           const mensagem = `Olá! A ${primeiroNome} está com uma novidade: o ${nomePrograma}. 🌟\n\nTe convido para fazer parte! Cadastre-se pelo nosso aplicativo:\n\n${urlAtual}\n\nQuando fizer seu cadastro, lembre-se de informar meu CPF para que eu também possa ganhar benefícios. 😊`;
