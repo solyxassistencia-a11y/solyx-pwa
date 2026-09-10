@@ -2483,7 +2483,7 @@ function aplicarTelefoneDinamico() {
           const nomePrograma = window.NOME_PROGRAMA || "";
 
           // 3. Monta a mensagem usando quebras de linha normais (\n) e emojis
-          const mensagem = `Olá! [TRATAMENTO_MAIUSCULO] ${primeiroNome} está com uma novidade: o ${nomePrograma}. 🌟\n\nTe convido para fazer parte! Cadastre-se pelo nosso aplicativo:\n\n${urlAtual}\n\nQuando fizer seu cadastro, lembre-se de informar meu CPF para que eu também possa ganhar benefícios. 😊`;
+          const mensagem = `Olá! ${window.TRATAMENTO_MAI} ${primeiroNome} está com uma novidade: o ${nomePrograma}. 🌟\n\nTe convido para fazer parte! Cadastre-se pelo nosso aplicativo:\n\n${urlAtual}\n\nQuando fizer seu cadastro, lembre-se de informar meu CPF para que eu também possa ganhar benefícios. 😊`;
 
           // 4. Codifica a mensagem para formato de URL e abre o WhatsApp
           const urlWhatsapp = `https://api.whatsapp.com/send?text=${encodeURIComponent(mensagem)}`;
