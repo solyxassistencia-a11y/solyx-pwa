@@ -5,7 +5,7 @@
 /* ============================================================
    1. CONFIGURAÇÃO
    ============================================================ */
-const CACHE_NAME = "AppFidelidade-v32";
+const CACHE_NAME = "AppFidelidade-v33";
 const OFFLINE_PAGE = "./offline.html";
 /*
  * Arquivos que devem existir obrigatoriamente
@@ -73,7 +73,7 @@ self.addEventListener("activate", event => {
                     cacheNames.map(cacheName => {
                         if (
                             cacheName.startsWith(
-                                "SolyxLojista-"
+                                "AppFidelidade-"
                             )
                             &&
                             cacheName !== CACHE_NAME
