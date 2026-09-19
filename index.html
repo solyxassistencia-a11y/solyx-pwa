@@ -104,12 +104,34 @@
       scroll-behavior:smooth;
       }
       body{
-      font-family:'Poppins',sans-serif;
-      background:var(--bg);
-      color:var(--text);
-      line-height:1.6;
-      overflow-x:hidden;
+        font-family:'Poppins',sans-serif;
+        background:var(--bg);
+        color:var(--text);
+        line-height:1.6;
+        overflow-x:hidden;
+        position:relative;
+        isolation:isolate;
       }
+      /* =====================================================
+         OVERLAY DO BACKGROUND DINÂMICO
+         Mantém a cor oficial, mas melhora o contraste
+      ===================================================== */
+
+      body::before{
+        content:"";
+        position:fixed;
+        inset:0;
+        z-index:-1;
+        pointer-events:none;
+
+        background:
+          linear-gradient(
+            135deg,
+            rgba(0,0,0,.72),
+            rgba(0,0,0,.58),
+            rgba(0,0,0,.76)
+          );
+      }      
       img{
       max-width:100%;
       display:block;
@@ -136,6 +158,12 @@
       /* =====================================================
          SEÇÕES
       ===================================================== */
+      .section-title{
+        text-shadow:
+          0 2px 5px rgba(0,0,0,.65),
+          0 5px 18px rgba(0,0,0,.35);
+      }
+
       .sf-section{
       padding:var(--space-2xl) 0;
       }
@@ -408,6 +436,7 @@
       gap:60px;
       }
       .hero-content h1{
+      text-shadow: 0 3px 6px rgba(0,0,0,.75), 0 8px 25px rgba(0,0,0,.40);
       font-size:
       clamp(42px,5vw,72px);
       line-height:1.05;
@@ -869,7 +898,9 @@ rgba(212,175,55,.5); background: linear-gradient( 90deg, rgba(212,175,55,.12),
 transparent ); } 
       .ranking-item.silver{ border-color: rgba(190,190,190,.3); }
       .ranking-item.bronze{ border-color: rgba(205,127,50,.4); }
-@media(max-width:600px){ body{ overflow-x:hidden; } 
+@media(max-width:600px){ 
+  body{ overflow-x:hidden; } 
+  body::before{  background: linear-gradient(135deg,  rgba(0,0,0,.76),   rgba(0,0,0,.64),  rgba(0,0,0,.80) );}
                         .ranking-item{ padding:20px;
 gap:15px; } 
                         .medal{ font-size:35px; } 
@@ -2213,7 +2244,7 @@ async function salvarIdentidadeVisual() {
                 logo.alt = window.NOME_PROGRAMA;
             });
         }
-		// v.5.2 Injeta o tratamento de gênero em classes HTML vazias
+    // v.5.2 Injeta o tratamento de gênero em classes HTML vazias
         document.querySelectorAll('.tratamento-minusculo').forEach(el => el.innerText = window.TRATAMENTO_MIN);
         document.querySelectorAll('.tratamento-maiusculo').forEach(el => el.innerText = window.TRATAMENTO_MAI);     
         document.querySelectorAll('.nome-dinamico').forEach(el => el.innerText = window.NOME_PROGRAMA);
@@ -2227,7 +2258,7 @@ async function salvarIdentidadeVisual() {
         
         // Aplica o Nome do Bot
         document.querySelectorAll('.nome-bot-dinamico').forEach(el => el.innerText = window.NOME_BOT);
-		//  Dispara a sua função do cabeçalho do FAQ!
+    //  Dispara a sua função do cabeçalho do FAQ!
         if (typeof aplicarIdentidadeBotFaq === "function") {
             aplicarIdentidadeBotFaq(window.NOME_BOT, window.AVATAR_BOT);
         }
@@ -2244,14 +2275,14 @@ async function salvarIdentidadeVisual() {
         });
         document.querySelectorAll('.alt-dinamico').forEach(img => img.alt = window.NOME_PROGRAMA);
       
-      	 // 6. BACKGROUNDS DINAMICOS
+         // 6. BACKGROUNDS DINAMICOS
 
               // Injeta a cor de fundo primária nos elementos com a classe bg-dinamico
         document.querySelectorAll('.bg-dinamico').forEach(el => {
             el.style.background = window.BG_COR1; 
         });
 
-    	    // Injeta o gradiente completo nos elementos com a classe bg-dinamico
+          // Injeta o gradiente completo nos elementos com a classe bg-dinamico
         document.querySelectorAll('.bg-dinamico').forEach(el => {
             el.style.background = `linear-gradient(335deg, ${window.BG_COR1} 0%, ${window.BG_COR2} 150%)`;
         });
@@ -2267,7 +2298,7 @@ async function salvarIdentidadeVisual() {
             // 1. Lê a frase curinga original que você escreveu no HTML
             let texto = el.getAttribute('data-placeholder');
           
-          	// NOVOS Curingas de Tratamento (v.5.2)
+            // NOVOS Curingas de Tratamento (v.5.2)
             texto = texto.replace(/\[TRATAMENTO_MINUSCULO\]/gi, window.TRATAMENTO_MIN || 'a');
             texto = texto.replace(/\[TRATAMENTO_MAIUSCULO\]/gi, window.TRATAMENTO_MAI || 'A');
             
