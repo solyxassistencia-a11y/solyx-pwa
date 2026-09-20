@@ -608,42 +608,14 @@
       display:flex;
       justify-content:center;
       }
-      .coin-fidelidade{
-      width:280px;
-      height:280px;
-      border-radius:50%;
-      background:
-      radial-gradient(
-      circle at 30% 30%,
-      #fff4a8,
-      #D4AF37 40%,
-      #8a6500
-      );
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-size:140px;
-      font-weight:800;
-      color:#8B0000;
-      box-shadow:
-      0 0 80px rgba(212,175,55,.35);
-      animation:
-      coinFloat 5s ease-in-out infinite;
+      .coin-gif{
+        width:280px;
+        height:280px;
+        object-fit:contain;
+        display:block;
+        filter:drop-shadow(0 0 35px rgba(212,175,55,.35));
       }
-      .coin-fidelidade span{
-      text-shadow:
-      0 5px 15px rgba(0,0,0,.4);
-      }
-      @keyframes coinFloat{
-      0%,100%{
-      transform:translateY(0)
-      rotateY(0deg);
-      }
-      50%{
-      transform:translateY(-20px)
-      rotateY(180deg);
-      }
-      }
+     
       .coin-content p{
       color:var(--muted);
       font-size:18px;
@@ -1285,9 +1257,11 @@ display:none; padding-left: 20px; }
       <div class="container">
         <div class="grid grid-2 coin-layout">
           <div class="coin-visual">
-            <div class="coin-fidelidade">
-              <span class="letra-moeda-dinamica"></span>
-            </div>
+            <img 
+              src="https://www.dropbox.com/scl/fi/2fhs81ukadu32b2gcl71n/SXcoin_3D.gif?rlkey=o7cl7czoba0orgvnp7etznc2i&raw=1"
+              alt="Moeda Oficial"
+              class="coin-gif"
+            />
           </div>
 
           <div class="coin-content">
