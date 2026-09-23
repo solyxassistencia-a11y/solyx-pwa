@@ -5,7 +5,7 @@
 /* ============================================================
    1. CONFIGURAÇÃO
    ============================================================ */
-const CACHE_NAME = "AppFidelidade-v37";
+const CACHE_NAME = "AppFidelidade-v38";
 const OFFLINE_PAGE = "./offline.html";
 /*
  * Arquivos que devem existir obrigatoriamente
