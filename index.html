@@ -12,7 +12,7 @@
     <link rel="manifest" href="./manifest.json">
     <link
       rel="apple-touch-icon"
-      href="https://www.dropbox.com/scl/fi/aerzmsvnnlsa6e14ket13/SF_512x512_Cliente.png?rlkey=tyn0narcis68k03is68sddtfs&raw=1"
+      href="https://www.dropbox.com/scl/fi/9176rogla9fovmrc28y6x/EF_Logo_Cliente_512x512.png?rlkey=xgknlqls2vftventacyyfv6ks&raw=1"
     />
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="application-name" content="Solyx Fidelidade" />
@@ -23,13 +23,13 @@
       rel="icon"
       type="image/png"
       sizes="32x32"
-      href="https://www.dropbox.com/scl/fi/aerzmsvnnlsa6e14ket13/SF_512x512_Cliente.png?rlkey=tyn0narcis68k03is68sddtfs&raw=1"
+      href="https://www.dropbox.com/scl/fi/s1jnn2d8clygn1xjcyj90/EF_Logo_Cliente_32x32.png?rlkey=d96168vnqcipf02tut5mq8vsd&raw=1"
     />
     <link
       rel="icon"
       type="image/png"
       sizes="192x192"
-      href="https://www.dropbox.com/scl/fi/aerzmsvnnlsa6e14ket13/SF_512x512_Cliente.png?rlkey=tyn0narcis68k03is68sddtfs&raw=1"
+      href="https://www.dropbox.com/scl/fi/sw991bc6enb4suv182469/EF_Logo_Cliente_192x192.png?rlkey=l2bmsiqauwewzxq1jey0g3r06&raw=1"
     />
     <!-- Fonte Oficial -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -1248,6 +1248,8 @@ display:none; padding-left: 20px; }
             />
           </div>
 
+        
+
           <div class="coin-content">
             <span class="badge badge-gold"> MOEDA OFICIAL </span>
 
@@ -1303,41 +1305,37 @@ display:none; padding-left: 20px; }
         </div>
 
         <div class="grid grid-3 prizes-grid">
-          <!-- PRÊMIO 01 -->
+
+        <!-- Prêmio 01: Campanha Solidária -->
 
           <div class="prize-card card-premium reveal">
             <div class="prize-image">
-              <img
-                src="https://www.dropbox.com/scl/fi/gwkovkafyewytiy6tdykf/Cliente_Premiado_Cashback50.png?rlkey=wmhpnlml59o8jaajwdta3ejl3&raw=1"
-                alt="CASHBACK"
-              />
+              <img id="imgCampanhaSolidaria" src="" alt="SOLIDARIEDADE" />
             </div>
 
             <div class="prize-content">
               <span class="badge badge-gold">
-                100.000&nbsp;<span class="moeda-dinamica"></span>
+                SOLIDARIEDADE
               </span>
 
-              <h3>CASHBACK</h3>
+              <h3>Pontos que Fazem o Bem!</h3>
 
-              <p>Escolha o valor disponível conforme a campanha vigente.</p>
+              <p>Participe das nossas campanhas solidárias, ajude quem precisa e ainda acumule pontos para trocar por brindes.</p>
 
               <a href="javascript:abrirModalCadastro();" class="btn btn-gold">
                 <i class="bi bi-stars"></i>
 
-                Quero conquistar
+                Quero Participar
               </a>
             </div>
           </div>
 
-          <!-- PRÊMIO 02 -->
+
+            <!-- Prêmio 02: 1º Lugar Ranking Mensal -->
 
           <div class="prize-card card-premium reveal">
             <div class="prize-image">
-              <img
-                src="https://www.dropbox.com/scl/fi/fp6ingezom0ntnsyi6zz6/Vale-Cinema_DoseDupla.jfif?rlkey=5l0mb84xmndbpvmsshg7cznmr&raw=1"
-                alt="Vale Cinema"
-              />
+              <img id="imgRankingMensal" src="" alt="Premio do mes" />
             </div>
 
             <div class="prize-content">
@@ -1345,33 +1343,32 @@ display:none; padding-left: 20px; }
                 325.000&nbsp;<span class="moeda-dinamica">" " </span>
               </span>
 
-              <h3>Vale Cinema</h3>
+              <h3>Quem Se Destaca, É Recompensado!</h3>
 
-              <p>Momentos especiais também fazem parte das recompensas.</p>
+              <p>Some pontos, suba no ranking e concorra todos os meses a prêmios especiais em nosso GP.</p>
 
               <a href="javascript:abrirModalCadastro();" class="btn btn-gold">
                 <i class="bi bi-stars"></i>
-                Quero conquistar
+                Quero também!
               </a>
             </div>
           </div>
 
-          <!-- PRÊMIO 03 -->
+            <!-- Prêmio 03: Ranking Anual -->
 
           <div class="prize-card card-premium reveal">
-            <div class="prize-image">
-              <img
-                src="https://www.dropbox.com/scl/fi/x50epkz6f1x2oy0ylh2v9/Chek-inPremiado_01.jfif?rlkey=wjjkccavftfz4sj7y0hikwt51&raw=1"
-                alt="Check-in Premiado"
-              />
-            </div>
-            <div class="prize-content">
-              <span class="badge badge-gold"> 1º LUGAR NO RANKING ANUAL </span>
 
-              <h3>Check-in Premiado</h3>
+            <div class="prize-image">
+              <img id="imgRankingAnual" src="" alt="Premio do ano" />
+            </div>
+
+            <div class="prize-content">
+              <span class="badge badge-gold"> 1º LUGAR </span>
+
+              <h3>Quem Faz História, Ganha no Final!</h3>
 
               <p>
-                Experiências únicas para clientes que participam do programa.
+                Recompensas especiais para quem mais acumula mais medalhas no decorrer do ano, transformando seus pontos em liderança, e fechar o ano no topo do ranking.
               </p>
 
               <a href="javascript:abrirModalCadastro();" class="btn btn-gold">
@@ -2019,7 +2016,7 @@ display:none; padding-left: 20px; }
 <script>
 // =========================================================================
     // FIDELIDADE.NET.BR IDENTIDADE VISUAL DINÂMINCA 6.0
-    const API_URL = "https://script.google.com/macros/s/AKfycbwgFUB1b-yKqzxY7ncvZTywv6NimIM_OiBI7ws09kkU2atTMgN7AiM2uezrh6RTwyvTXA/exec";
+    const API_URL = "https://script.google.com/macros/s/AKfycbwbEInUheQINSyYm9StDr6q76R7PZ3lzHB7Kt0_4ytES2vPt6qSLltZS3jq4QutJ_JydA/exec";
 // ==========================================
 // FUNÇÕES DE IDENTIDADE VISUAL
 // ==========================================
@@ -2096,7 +2093,7 @@ async function salvarIdentidadeVisual() {
         URL_Roleta: document.getElementById('idAppRoleta').value,
         URL_ClawMachine: document.getElementById('idAppClaw').value,
         URL_Pescaria: document.getElementById('idAppPescaria').value,
-      	URL_Sorteios: document.getElementById('idAppSorteios').value,
+        URL_Sorteios: document.getElementById('idAppSorteios').value,
         URL_RoletaInterativa: document.getElementById('idAppRoletaInterativa').value,
         URL_Campanhas: document.getElementById('idAppCampanhas').value,
       
@@ -2239,7 +2236,7 @@ async function salvarIdentidadeVisual() {
         
         // Nome do Bot
         document.querySelectorAll('.nome-bot-dinamico').forEach(el => el.innerText = window.NOME_BOT);
-		//  Dispara a sua função do cabeçalho do FAQ!
+        //  Dispara a sua função do cabeçalho do FAQ!
         if (typeof aplicarIdentidadeBotFaq === "function") {
             aplicarIdentidadeBotFaq(window.NOME_BOT, window.AVATAR_BOT);
         }
@@ -2256,14 +2253,14 @@ async function salvarIdentidadeVisual() {
         });
         document.querySelectorAll('.alt-dinamico').forEach(img => img.alt = window.NOME_PROGRAMA);
       
-      	 // 6. BACKGROUNDS DINAMICOS
+         // 6. BACKGROUNDS DINAMICOS
 
               // Injeta a cor de fundo primária nos elementos com a classe bg-dinamico
         document.querySelectorAll('.bg-dinamico').forEach(el => {
             el.style.background = window.BG_COR1; 
         });
 
-    	    // Injeta o gradiente completo nos elementos com a classe bg-dinamico
+            // Injeta o gradiente completo nos elementos com a classe bg-dinamico
         document.querySelectorAll('.bg-dinamico').forEach(el => {
             el.style.background = `linear-gradient(335deg, ${window.BG_COR1} 0%, ${window.BG_COR2} 150%)`;
         });
@@ -2517,6 +2514,83 @@ async function salvarIdentidadeVisual() {
     });
   }
 </script>
+<!-- =====================================================
+         MODAL DE INSTALAÇÃO EXCLUSIVO PARA IOS (IPHONE/IPAD)
+    ===================================================== -->
+    <div id="iosInstallPrompt" style="display: none; position: fixed; bottom: 25px; left: 50%; transform: translateX(-50%); width: 90%; max-width: 400px; background: rgba(5, 5, 5, 0.95); border: 1px solid var(--gold); border-radius: 20px; padding: 25px 20px; z-index: 10000; box-shadow: var(--shadow-premium); text-align: center; backdrop-filter: blur(15px);">
+        
+        <span onclick="document.getElementById('iosInstallPrompt').style.display='none'" style="position: absolute; top: 12px; right: 18px; font-size: 24px; color: var(--muted); cursor: pointer; transition: 0.3s;">&times;</span>
+        
+        <h3 style="color: var(--gold-light); margin-bottom: 12px; font-size: 18px; font-weight: 600;">Instale nosso Aplicativo</h3>
+        
+        <p style="color: var(--text); font-size: 14px; line-height: 1.6; margin-bottom: 0;">
+            Para uma melhor experiência no seu iPhone:<br><br>
+            1. Toque no ícone de compartilhar <b style="font-size:20px; color: var(--primary); vertical-align: middle;"><i class="bi bi-box-arrow-up"></i></b> abaixo.<br>
+            2. Selecione <strong>"Adicionar à Tela de Início"</strong> <b style="font-size:18px; color: var(--primary); vertical-align: middle;"><i class="bi bi-plus-square"></i></b>.
+        </p>
+    </div>
+<!--OBTÉM IMAGEM DE PRÊMIOS E CAMPANHAS-->
+    <script>
+    async function carregarImagensPremios() {
+        try {
+            // 1. Busca a imagem da Campanha Solidária
+            const resSolidaria = await fetch(API_URL, {
+                method: 'POST',
+                body: JSON.stringify({ action: 'obter_campanha_solidaria' })
+            }).then(r => r.json());
 
+            if (resSolidaria.status === 'success' && resSolidaria.dados) {
+                const urlCampanha = resSolidaria.dados["Campanha Solidaria Imagem"];
+                if (urlCampanha) document.getElementById('imgCampanhaSolidaria').src = urlCampanha;
+            }
+
+            // 2. Busca as imagens dos Rankings (Mensal e Anual)
+            const resRanking = await fetch(API_URL, {
+                method: 'POST',
+                body: JSON.stringify({ action: 'dados_ranking_admin' })
+            }).then(r => r.json());
+
+            if (resRanking.status === 'success' && resRanking.premiosSalvos) {
+                const premios = resRanking.premiosSalvos;
+                
+                // Imagem 1º Lugar Mensal (corresponde ao id "p1U" no admin salvo como "p1Url")
+                if (premios.p1Url) document.getElementById('imgRankingMensal').src = premios.p1Url;
+                
+                // Imagem Prêmio Anual (corresponde ao id "paAnualImg" no admin salvo como "premioAnualUrl")
+                if (premios.premioAnualUrl) document.getElementById('imgRankingAnual').src = premios.premioAnualUrl;
+            }
+        } catch (error) {
+            console.error("Erro ao carregar as imagens dinâmicas dos prêmios:", error);
+        }
+    }
+
+    // Executa a requisição assim que o DOM estiver pronto
+    document.addEventListener("DOMContentLoaded", carregarImagensPremios);
+    </script>
+
+    <script>
+        // Lógica inteligente para mostrar o aviso apenas para quem está no iPhone e ainda não instalou
+        function checarAvisoInstalacaoIOS() {
+            // Verifica se é iPhone, iPad ou iPod
+            const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+            
+            // Verifica se está usando o navegador Safari (o único que permite adicionar à tela de início no iOS)
+            const isSafari = !!navigator.userAgent.match(/Version\/[\d\.]+.*Safari/);
+            
+            // Verifica se o app já está instalado (rodando em modo tela cheia / standalone)
+            const isStandalone = window.navigator.standalone || window.matchMedia('(display-mode: standalone)').matches;
+
+            // Se for iOS, estiver no Safari e o app AINDA NÃO estiver instalado:
+            if (isIOS && isSafari && !isStandalone) {
+                // Aguarda 2 segundos após a página carregar para não assustar o usuário
+                setTimeout(() => {
+                    document.getElementById('iosInstallPrompt').style.display = 'block';
+                }, 2000);
+            }
+        }
+
+        // Executa a verificação assim que a página carregar
+        window.addEventListener('load', checarAvisoInstalacaoIOS);
+    </script>
   </body>
 </html>
